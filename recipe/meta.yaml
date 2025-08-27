@@ -5,11 +5,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/t/typed_ast/typed_ast-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/t/typed_ast/typed_ast-{{ version }}.tar.gz
   sha256: 94282f7a354f36ef5dbce0ef3467ebf6a258e370ab33d5b40c249fa996e590dd
 
 build:
-  number: 1
+  number: 2
   script: {{ PYTHON }} -m pip install . -vv
   skip: true  # [py2k]
 
@@ -18,6 +18,7 @@ requirements:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
   host:
     - python
     - pip
